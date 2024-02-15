@@ -1,0 +1,38 @@
+
+    static ArrayList<Integer> merge_sort(ArrayList<Integer> arr) {
+          helper(arr,0,arr.size()-1);
+       return arr;
+    }
+
+static void helper( ArrayList<Integer> arr , int start, int end){
+    if(start >= end) return; 
+    int mid = (start + end ) /2;
+    helper(arr, start, mid);
+    helper(arr,mid+1,end);
+    merge(arr,start,mid,end);
+
+ }
+ static void merge(ArrayList<Integer> arr , int start, int mid,int end){
+        int i=start; 
+        int j= mid+1;
+          ArrayList<Integer> newarray = new ArrayList<Integer>(end-start+1); 
+        while(i<= mid && j <= end){
+        if(arr.get(i) <= arr.get(j)){
+            newarray.add(arr.get(i));
+            i++;
+        }
+        else { newarray.add(arr.get(j));
+        j++;} }
+        while (i <= mid){
+              newarray.add(arr.get(i));
+            i++;
+        }
+            while(j <= end)
+            { newarray.add(arr.get(j)); 
+                j++;
+            }  
+            
+            for(int k = start;k <= end;k++){
+                arr.set(k,newarray.get(k-start));
+            }
+ }
