@@ -1,0 +1,39 @@
+/* Selection Sort Locate the smallest item and put it in the first place,
+then select the next smallest item and put it in the second place and so on. 
+Sorting by repeated selection is called Selection sort. */
+package sorting;
+
+public class SelectionSort {
+
+	public static void main(String args[]) {
+
+		//Locate the smallest item and put it in the first place, then select the next smallest item and put it in the second place and so on. Sorting by repeated selection is called Selection sort.
+		int [] arr = new int[] {2,4,1,53,17,19,0,34,15,12,13,100} ;
+
+
+		for(int i = 0; i < arr.length-1;i++)
+		{
+			int min_pos = i;
+			int j = i+1;
+			int min = arr[i];
+
+			for( ; j< arr.length;j++)
+			{
+				if(arr[j]  < min )
+				{
+					min = arr[j];
+					min_pos = j;
+				}
+			}
+			if(min_pos != -1) {
+				int temp = arr[i];
+				arr[i] = arr[min_pos];
+				arr[min_pos] = temp;
+			}
+		}
+		System.out.print("Sorted array is: ");
+		for (int num : arr) {
+			System.out.print(num + " ");
+		}
+	}
+}
