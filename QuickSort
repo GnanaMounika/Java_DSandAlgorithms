@@ -1,0 +1,30 @@
+
+    static ArrayList<Integer> quick_sort(ArrayList<Integer> arr) {
+        helper(arr,0,arr.size()-1);
+        return arr;
+    }
+    
+    static void helper(ArrayList<Integer> arr, int start,int end){
+        if(end<=start){
+            return;
+        }
+        Random ran=new Random();
+        int randomi=ran.nextInt(end-start+1)+start;
+        Collections.swap(arr, start,randomi);
+        int pivot=arr.get(start);
+        int small=start+1;
+        int bigger=end;
+        while(small<=bigger){
+            if(arr.get(small)<pivot){
+                small++;
+            }else if(arr.get(bigger)> pivot){
+                bigger--;
+            }else{
+                Collections.swap(arr,small,bigger);
+                small++;bigger--;
+            }
+        }
+        Collections.swap(arr, bigger,start);
+        helper(arr,start,bigger-1);
+        helper(arr,bigger+1,end);
+    }
